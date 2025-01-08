@@ -27,7 +27,7 @@ public class PostService {
     @SneakyThrows
     public Optional<Post> findWithShareLockById(Long id) {
         postRepository.findWithShareLockById(id);
-        Thread.sleep(10000);
+        Thread.sleep(20000);
         return postRepository.findWithShareLockById(id);
     }
 
@@ -37,5 +37,10 @@ public class PostService {
                 .subject(subject)
                 .content(content)
                 .build());
+    }
+
+
+    public Optional<Post> findWithWriteLockById(Long id) {
+        return postRepository.findWithWriteLockById(id);
     }
 }

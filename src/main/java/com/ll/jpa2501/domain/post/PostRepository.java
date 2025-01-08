@@ -11,6 +11,10 @@ import java.util.Optional;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Long> {
     List<Post> findByUsername(String username);
+
     @Lock(LockModeType.PESSIMISTIC_READ)
     Optional<Post> findWithShareLockById(Long id);
+
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    Optional<Post> findWithWriteLockById(Long id);
 }

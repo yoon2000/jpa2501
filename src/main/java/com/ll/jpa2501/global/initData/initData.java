@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class initData {
     @Bean
-    public ApplicationRunner applicationRunner(PostService chatRoomService) {
+    public ApplicationRunner applicationRunner(PostService postService) {
         return args -> {
-            Post post = chatRoomService.create("작성자", "제목", "내용");
+            Post post = postService.create("작성자", "제목", "내용");
         };
     }
 }
